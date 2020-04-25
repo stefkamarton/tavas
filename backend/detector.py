@@ -3,15 +3,40 @@
 # By Lachlan Miller
 # github.com/lmiller1990
 
-# Reference: 
+# Reference:
 # https://www.pyimagesearch.com/2014/10/20/finding-shapes-images-using-python-opencv/
 ##
 
 import cv2 as cv
 import numpy as np
+import sys, getopt
+
+Blue = 0
+Green = 0
+Red = 0
+ImagePath = ''
+
+def main(argv):
+   try:
+      opts, args = getopt.getopt(argv,"hb:r:g:i:",["blue=","green=","red=","image="])
+   except getopt.GetoptError:
+      print ('test.py -b <blue value> -g <green value> -r <red value> -i <image path>')
+      sys.exit(2)
+   for opt, arg in opts:
+      if opt == '-h':
+         print ('test.py -b <blue value> -g <green value> -r <red value> -i <image path>')
+         sys.exit()
+      elif opt in ("-b", "--blue"):
+         Blue = arg
+      elif opt in ("-g", "--green"):
+         Green = arg
+      elif opt in ("-r", "--red"):
+         Red = arg
+      elif opt in ("-i", "--image"):
+         ImagePath = arg
 
 # Color of a lake [blue green red]
-BGR = np.array([116, 173, 118])
+BGR = np.array([Blue, Green, Red])
 upper = BGR + 60
 lower = BGR - 70
 
@@ -30,7 +55,7 @@ def find_mask(image):
 
 def find_contours(mask):
     (cnts, hierarchy) = cv.findContours(
-            mask.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
+        mask.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
     print("Found %d black shapes" % (len(cnts)))
     return cnts
@@ -42,27 +67,30 @@ def show_contours(contours, image):
     cv.drawContours(image, contours, -1, (0, 0, 255), 2)
     cv.imshow("contours", image)
 
+
 def get_main_contour(contours):
     copy = contours.copy()
     copy.sort(key=len, reverse=True)
     return copy[0]
 
+
 if __name__ == "__main__":
-    image = read_image("pond.jpg")
+    main(sys.argv[1:])
+    image = read_image(ImagePath)
     mask = find_mask(image)
 
     contours = find_contours(mask)
-    main_contour = get_main_contour(contours) 
+    main_contour = get_main_contour(contours)
     show_contours([main_contour], image)
 
     c = max(contours, key=cv.contourArea)  # max contour
     f = open('path.svg', 'w+')
-    f.write('<svg width="' + str(1000) + '" height="' + str(750) + '" xmlns="http://www.w3.org/2000/svg">')
+    f.write('<svg width="' + str(1000) + '" height="' +
+            str(750) + '" xmlns="http://www.w3.org/2000/svg">')
     f.write('<polygon points="')
 
-    out =" "
+    out = " "
     for i in range(len(c)):
-        # print(c[i][0])
         x, y = c[i][0]
         out += str(x)+","+str(y)+" "
         f.write(str(x) + ',' + str(y) + ' ')
@@ -74,4 +102,3 @@ if __name__ == "__main__":
     print(main_contour)
     key = cv.waitKey(0)
     print(out)
-
