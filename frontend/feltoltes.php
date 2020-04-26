@@ -1,26 +1,20 @@
 <?php
-function Upload(){
-	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-	$uploadOk = 1;
-	$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-	// Check if image file is a actual image or fake image
-	if(isset($_POST["submit"])) {
-		$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-		if($check !== false) {
-			echo "File is an image - " . $check["mime"] . ".";
-			$uploadOk = 1;
-		} else {
-			echo "File is not an image.";
-			$uploadOk = 0;
-		}
-	}
+
+function Upload($name = "file") {
+    $target_dir = "lakes/";
+    $target_file = $target_dir .uniqid()."_". basename($_FILES[$name]["name"]);
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    if (move_uploaded_file($_FILES[$name]["tmp_name"], $target_file)) {
+        echo "asd";
+        return $target_file;
+    }
 }
-echo "JÓÓÓÓÓ"
+var_dump($_FILES);
 
-
-
-
-
-
+if ($_POST["__method__"] == "ajax") {
+    $res=Upload();
+    var_dump($res);
+} else {
+    die("501 - UNAUTHORIZED");
+}
 ?>

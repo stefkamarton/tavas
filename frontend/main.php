@@ -47,14 +47,14 @@
 
     <div class="row">
       <div class="col-sm">
-	<form action="" method="post" class="ajax" enctype="multipart/form-data">
+	<form action="" method="post" class="ajax" enctype="multipart/form-data" data-method="ajax">
         <div class="row" style="margin-top: 1rem;">
           <div class="col-lg">
             
               <div class="form-group">
                 <label for="exampleFormControlFile1" class="">Upload a picture from a lake</label>
                 <br>
-                <input type="file" class="btn btn-primary btn-block" name="file" id="exampleFormControlFile1">
+                <input type="file" class="btn btn-primary btn-block" name="file" id="exampleFormControlFile1" required="required">
               </div>
             
           </div>
@@ -81,7 +81,7 @@
                    aria-describedby="basic-addon1"
                    id="lake-name"
                    onchange="changeLakeName()"
-                   >
+                   required="required">
           </div>
         </div>
 
