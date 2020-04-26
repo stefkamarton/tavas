@@ -1,8 +1,12 @@
 "use strict";
 $(document).ready(function () {
 	$("form.ajax .submit").on('click', function () {
-        var form = $(this).closest("form");
-        Ajax(form);
+    if($("lake-height").val() !== "" &&
+       $("lake-depth").val() !== "" &&
+       $("lake-name").val() !== ""){
+      var form = $(this).closest("form");
+      Ajax(form);
+    }
     });
 });
 

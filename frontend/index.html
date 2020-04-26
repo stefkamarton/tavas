@@ -62,13 +62,34 @@
 
         <div class="dropdown-divider"></div>
 
-        <div class="row" style="margin-top: 1rem;">
-          <div class="col-lg">
-            <label for="customRange2">Lake's estimated size (small, medium, large)</label>
-            <input type="range" class="custom-range" min="0" max="2" id="lake-size" onchange="changeLakeSize()">
-          </div>  
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Height&nbsp;</span>
+          </div>
+          <input type="number"
+                 class="form-control"
+                 placeholder="m" 
+                 aria-label="Height"
+                 aria-describedby="lake-height"
+                 id="lake-height"
+                 onchange="changeLakeHeight()"
+                 >
         </div>
 
+        <div class="input-group" style="margin-top: .3rem;">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Depth&nbsp;&nbsp;</span>
+          </div>
+          <input type="number"
+                 class="form-control"
+                 placeholder="m"
+                 aria-label="Depth"
+                 aria-describedby="lake-depth"
+                 id="lake-depth"
+                 onchange="changeLakeDepth()"
+                 >
+        </div>
+       
         <div class="dropdown-divider"></div>
 
         <div class="row" style="margin-top: 1rem;">
@@ -98,34 +119,6 @@
         <div class="dropdown-divider" style="margin-top: 2rem; margin-bottom: 2rem;"></div>
 
         <div class="row" style="margin-top: 1rem;">
-
-          <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Height&nbsp;</span>
-            </div>
-            <input type="number"
-                   class="form-control"
-                   placeholder="m" 
-                   aria-label="Height"
-                   aria-describedby="lake-height"
-                   id="lake-height"
-                   onchange="changeLakeHeight()"
-                   >
-          </div>
-
-          <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Depth&nbsp;&nbsp;</span>
-            </div>
-            <input type="number"
-                   class="form-control"
-                   placeholder="m"
-                   aria-label="Depth"
-                   aria-describedby="lake-depth"
-                   id="lake-depth"
-                   onchange="changeLakeDepth()"
-                   >
-          </div>
 
           <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
             <div class="input-group-prepend">
