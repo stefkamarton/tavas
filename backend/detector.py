@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 ##
 # Code to detect lakes from Google Maps Images
 # By Lachlan Miller
@@ -22,11 +25,13 @@ if __name__ == "__main__":
     upper = BGR + 60
     lower = BGR - 70
 
+
     # Read an image from disk
     # @param {path} the path of the image to read
     # @returns {image} the image
     def read_image(path):
         return cv.imread(path)
+
 
     # applies a threshold to an image based on two boundaries
     # @param {image} the image to threshold
@@ -35,12 +40,14 @@ if __name__ == "__main__":
     def find_mask(image):
         return cv.inRange(image, lower, upper)
 
+
     def find_contours(mask):
         (cnts, hierarchy) = cv.findContours(
             mask.copy(), cv.RETR_EXTERNAL, cv.CHAIN_APPROX_SIMPLE)
 
-        print("Found %d black shapes" % (len(cnts)))
+        #print("Found %d black shapes" % (len(cnts)))
         return cnts
+
 
     # draw contours on an image
     # @param {list[[int, int]]} an array of [int, int] points to draw
@@ -61,7 +68,7 @@ if __name__ == "__main__":
 
     contours = find_contours(mask)
     main_contour = get_main_contour(contours)
-    show_contours([main_contour], image)
+    #show_contours([main_contour], image)
 
     c = max(contours, key=cv.contourArea)  # max contour
     f = open('path.svg', 'w+')
@@ -72,16 +79,15 @@ if __name__ == "__main__":
     out = " "
     for i in range(len(c)):
         x, y = c[i][0]
-        out += str(x)+","+str(y)+" "
+        out += str(x) + "," + str(y) + " "
         f.write(str(x) + ',' + str(y) + ' ')
 
     f.write('"/>')
     f.write('</svg>')
     f.close()
 
-    print(main_contour)
-    key = cv.waitKey(0)
+    #print(main_contour)
     print(out)
+    key = cv.waitKey(0)
 
 
-   

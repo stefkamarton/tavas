@@ -7,7 +7,7 @@ $(document).ready(function () {
       var form = $(this).closest("form");
       Ajax(form);
     }
-    });
+  });
 });
 
 var lake_size = 0;
