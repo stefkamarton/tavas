@@ -163,13 +163,16 @@
           </div>
         </div>
                   <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
+
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">RGB</span>
-                <canvas id="myCanvas" width="200" >
+
+            </div>
+                                                            <canvas id="myCanvas">
         Your user agent does not support the HTML5 Canvas element.
     </canvas>
-            </div>
-            <input type="text"
+                <div id="pickedcolor" style=" margin-left:50px;line-height: 100px;text-align:center;border:2px solid rgba(0,0,0,0.2);width:200px;height:200px"> Choosed color</div>
+            <input type="text" style="display: none;"
                    class="form-control"
                    readonly="readonly"
                    aria-label="red"
@@ -179,7 +182,7 @@
                    id="red"
                    >
                                                 <input type="text"
-                   class="form-control"
+                   class="form-control" style="display: none;"
                    readonly="readonly"
                    aria-label="green"
                    name="green"
@@ -188,7 +191,7 @@
                    id="green"
                    >
                         <input type="text"
-                   class="form-control"
+                   class="form-control" style="display: none;"
                    readonly="readonly"
                    aria-label="blue"
                    name="blue"

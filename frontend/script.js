@@ -119,6 +119,7 @@ window.addEventListener('load', function () {
 function ColorPick(imgsrc) {
     var canvas = $("#myCanvas").get(0);
     var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     var image = new Image();
     
@@ -127,7 +128,7 @@ function ColorPick(imgsrc) {
         /*$("#myCanvas").css("height",this.height);
          $("#myCanvas").css("width",this.width);*/
         console.log(this.height)
-        ctx.drawImage(image, 0, 0, 200,200* image.height/image.width); 
+        ctx.drawImage(image, 0, 0,200,200); 
     });
     image.src = imgsrc;
     
@@ -143,7 +144,7 @@ function ColorPick(imgsrc) {
         $("#red").val(pixels[pixelRedIndex]);
         $("#blue").val(pixels[pixelRedIndex + 2]);
         $("#green").val(pixels[pixelRedIndex + 1]);
-
+        $("#pickedcolor").css("backgroundColor", pixelcolor);
     });
 
 }
