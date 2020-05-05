@@ -127,12 +127,14 @@
 
           <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Surface</span>
+                <span class="input-group-text" id="basic-addon1">Surface (m<sup>2</sup>)</span>
             </div>
-            <input type="number"
+            <input type="text"
                    class="form-control"
+                   readonly="readonly"
                    placeholder="m^2"
                    aria-label="Surface"
+                   name="lake-surface"
                    aria-describedby="lake-surface"
                    id="lake-surface"
                    onchange="changeLakeSurface()"
