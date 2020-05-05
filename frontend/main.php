@@ -97,13 +97,12 @@
 
         <div class="row" style="margin-top: 1rem;">
 
-          <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
+        <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Altitude&nbsp;</span>
+              <span class="input-group-text" id="basic-addon1">Altitude (m)</span>
             </div>
             <input type="text"
                    class="form-control"
-                   placeholder="m" 
                    aria-label="Altitude"
                    aria-describedby="lake-altitude"
                    id="lake-height"
@@ -112,11 +111,10 @@
           </div>
           <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Sensor width&nbsp;</span>
+              <span class="input-group-text" id="basic-addon1">Sensor width (mm)</span>
             </div>
             <input type="text"
                    class="form-control"
-                   placeholder="mm" 
                    aria-label="Sensor width"
                    aria-describedby="sensor-width"
                    id="lake-height"
@@ -125,11 +123,10 @@
           </div>
                       <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Focus length&nbsp;</span>
+              <span class="input-group-text" id="basic-addon1">Focus length (mm)</span>
             </div>
             <input type="text"
                    class="form-control"
-                   placeholder="mm" 
                    aria-label="Focus length"
                    aria-describedby="focus-length"
                    id="lake-height"
@@ -138,11 +135,10 @@
           </div>
           <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Depth&nbsp;&nbsp;</span>
+              <span class="input-group-text" id="basic-addon1">Depth (m)</span>
             </div>
             <input type="number"
                    class="form-control"
-                   placeholder="m"
                    aria-label="Depth"
                    aria-describedby="lake-depth"
                    id="lake-depth"
@@ -157,7 +153,6 @@
             <input type="text"
                    class="form-control"
                    readonly="readonly"
-                   placeholder="m^2"
                    aria-label="Surface"
                    name="lake-surface"
                    aria-describedby="lake-surface"

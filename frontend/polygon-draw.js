@@ -8,6 +8,11 @@ var small_size = 100;
 var medium_size = 300;
 var large_size = 500;
 
+var sensor_width = 6.17;
+var focal_length = 4.55;
+var altitude = 50.4;
+var image_width = 3968;
+
 function readCoordinates(coordinates) {
     let coordinate_pairs = coordinates.split(" ");
     let index;
@@ -57,6 +62,10 @@ canvas.on('object:moving', function (option) {
     calculateSize();
 });
 
+function GSD(){
+    return (sensor_width * altitude * 100) / (focal_length * image_width);
+}
+
 function calculateSize(){
     let all_coordinates = [];
     let index;
@@ -72,7 +81,11 @@ function calculateSize(){
     let surface = Math.abs(sum/2);
     let small_surface = surface/2;
   
-    console.log("volume: " + (surface * small_size/2 + small_surface *small_size/2));
+    let volume = surface * small_size/2 + small_surface *small_size/2; //in pixels
+
+    console.log("vol: " + volume);
+    volume =(volume * GSD()) / 10000;
+    console.log("vol in m3: " + volume);
   }
 
 function drawPolygon() {
