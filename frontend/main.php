@@ -99,18 +99,43 @@
 
           <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">Height&nbsp;</span>
+              <span class="input-group-text" id="basic-addon1">Altitude&nbsp;</span>
             </div>
-            <input type="number"
+            <input type="text"
                    class="form-control"
                    placeholder="m" 
-                   aria-label="Height"
-                   aria-describedby="lake-height"
+                   aria-label="Altitude"
+                   aria-describedby="lake-altitude"
                    id="lake-height"
                    onchange="changeLakeHeight()"
                    >
           </div>
-
+          <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Sensor width&nbsp;</span>
+            </div>
+            <input type="text"
+                   class="form-control"
+                   placeholder="mm" 
+                   aria-label="Sensor width"
+                   aria-describedby="sensor-width"
+                   id="lake-height"
+                   onchange="changeLakeHeight()"
+                   >
+          </div>
+                      <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Focus length&nbsp;</span>
+            </div>
+            <input type="text"
+                   class="form-control"
+                   placeholder="mm" 
+                   aria-label="Focus length"
+                   aria-describedby="focus-length"
+                   id="lake-height"
+                   onchange="changeLakeHeight()"
+                   >
+          </div>
           <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1">Depth&nbsp;&nbsp;</span>
