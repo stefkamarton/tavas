@@ -56,10 +56,9 @@ canvas.on('object:moving', function(option) {
 
   let sum = 0;
   for(index = 0; index < all_coordinates.length - 1; index++){
-    sum += all_coordinates[index].x * all_coordinates[index + 1].y -
-          all_coordinates[index].y * all_coordinates[index + 1].x;
+    let act_sum = all_coordinates[index].x * all_coordinates[index + 1].y - all_coordinates[index].y * all_coordinates[index + 1].x;
+    sum += isNaN(act_sum) ? 0 : act_sum;
   }
-  console.clear();
   console.log("area: " + Math.abs(sum/2));
 });
 
