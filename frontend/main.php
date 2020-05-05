@@ -26,19 +26,12 @@
                  >
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="https://tavas.stefka.hu">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://tavas.stefka.hu/results">Result<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <button class="btn btn-primary my-2 my-sm-0"
-                            type="submit"
-                            onclick="login()"
-                            >Login</button>
-                    <button class="btn btn-outline-primary my-2 my-sm-0"
-                            type="submit"
-                            onclick="logout()"
-                            >Logout</button>
-                </form>
             </div>
 
         </nav>
@@ -64,15 +57,6 @@
                             <div class="dropdown-divider"></div>
 
                             <div class="row" style="margin-top: 1rem;">
-                                <div class="col-lg">
-                                    <label for="customRange2">Lake's estimated size (small, medium, large)</label>
-                                    <input type="range" class="custom-range" min="0" max="2" name="size" id="lake-size" onchange="changeLakeSize()">
-                                </div>  
-                            </div>
-
-                            <div class="dropdown-divider"></div>
-
-                            <div class="row" style="margin-top: 1rem;">
                                 <div class="input-group mb-3">
                                     <input type="text"
                                            class="form-control"
@@ -87,11 +71,8 @@
                                 </div>
                             </div>
 
+
                             <div class="dropdown-divider"></div>
-
-
-
-                            <div class="dropdown-divider" style="margin-top: 2rem; margin-bottom: 2rem;"></div>
 
                             <div class="row" style="margin-top: 1rem;">
 
@@ -147,7 +128,7 @@
 
                                 <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1">Surface (m<sup>2</sup>)</span>
+                                        <span class="input-group-text" id="basic-addon1">Value (liter)</span>
                                     </div>
                                     <input type="text"
                                            class="form-control"
@@ -176,7 +157,17 @@
                                        aria-describedby="svg_coord"
                                        id="svg_coord"
                                        style="display:none;"
-                                       
+
+                                       >
+                                                                <input type="text"
+                                       class="form-control"
+                                       readonly="readonly"
+                                       aria-label="filename"
+                                       name="filename"
+                                       aria-describedby="filename"
+                                       id="filename"
+                                       style="display:none;"
+
                                        >
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

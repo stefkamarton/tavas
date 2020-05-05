@@ -36,7 +36,7 @@ if ($_POST["__method__"] == "upload") {
             "name" => $_POST["name"],
             "date" => date("Y-m-d H:i:s"),
             "svg_coord" => $_POST["svg_coord"],
-            "picture" => $_FILES["file"]["name"],
+            "picture" => $_POST["filename"],
             "red" => $_POST["red"],
             "blue" => $_POST["blue"],
             "green" => $_POST["green"],

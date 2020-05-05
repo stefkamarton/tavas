@@ -64,12 +64,14 @@ function Ajax(obj, method) {
         success: function (data, textStatus) {
             if (method == "upload") {
                 console.log(data.coord);
+                
                 readCoordinates(data.coord);
                 drawPolygon();
                 $("#svg_coord").val(data.coord);
+                $("#filename").val(data.filename);
             }else if(method=="save"){
                 if(data.message==true){
-                    window.location.replace("https://tavas.stefka.hu");
+                    window.location.replace("https://tavas.stefka.hu/results");
 
                 }else{
                     alert("Hiba a feltöltés közben");

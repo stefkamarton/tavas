@@ -14,6 +14,9 @@
 		case "feltoltes":
 			require_once("feltoltes.php");
 			break;
+                    case "results":
+			require_once("eredmenyek.php");
+			break;
 		default:
 			die("404 - Page Not Found");
 	}
