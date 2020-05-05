@@ -2,7 +2,7 @@ var canvas = new fabric.Canvas('backgroundCanvas');
 var polygon_count = 1;
 var array_length;
 var circle_count = 1;
-var fill_color = "rgba(46, 240, 56, 0.5)";
+var fill_color = "rgba(255, 0, 0, 0.5)";
 
 var small_size = 100;
 var medium_size = 300;
@@ -17,7 +17,7 @@ function readCoordinates(coordinates) {
     let coordinate_pairs = coordinates.split(" ");
     let index;
     for (index = 0; index < coordinate_pairs.length; index++) {
-        if (index % coordinate_pairs.length*.3 == 0) {
+        if (index % 100 == 0) {
             addCircle(coordinate_pairs[index].split(',')[0], coordinate_pairs[index].split(',')[1]);
         }
     }
