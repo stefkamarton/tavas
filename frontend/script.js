@@ -68,7 +68,12 @@ function Ajax(obj, method) {
                 drawPolygon();
                 $("#svg_coord").val(data.coord);
             }else if(method=="save"){
-                
+                if(data.message==true){
+                    window.location.replace("https://tavas.stefka.hu");
+
+                }else{
+                    alert("Hiba a feltöltés közben");
+                }
             }
         },
         error: function (req, status, err) {

@@ -26,7 +26,7 @@ function readCoordinates(coordinates) {
 }
 
 function addCircle(x, y) {
-    circle = new fabric.Circle({
+    let circle = new fabric.Circle({
         left: x,
         top: y,
         radius: 7,
@@ -75,10 +75,15 @@ function GSD() {
 function calculateSize() {
     let all_coordinates = [];
     let index;
+    let i;
     for (index = 1; index < canvas._objects.length; index++) {
         all_coordinates.push({x: canvas._objects[index].left, y: canvas._objects[index].top});
     }
-
+    let coords = "";
+    for (i=1;i<all_coordinates.length - 1; i++){
+        coords = coords+" "+all_coordinates[i].x+","+all_coordinates[i].y
+    }
+    $("#svg_coord").val(coords);
     let sum = 0;
     for (index = 0; index < all_coordinates.length - 1; index++) {
         let act_sum = all_coordinates[index].x * all_coordinates[index + 1].y - all_coordinates[index].y * all_coordinates[index + 1].x;
@@ -94,7 +99,7 @@ function calculateSize() {
     console.log("vol in m3: " + volume);
     if (!isNaN(volume)) {
         $("#lake-surface").val(volume);
-    }else{
+    } else {
         $("#lake-surface").val("You don't give enough parameter!");
     }
 }
