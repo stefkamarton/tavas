@@ -1,13 +1,13 @@
 "use strict";
 $(document).ready(function () {
-	$("form.ajax .submit").on('click', function () {
-    if($("lake-height").val() !== "" &&
-       $("lake-depth").val() !== "" &&
-       $("lake-name").val() !== ""){
-      var form = $(this).closest("form");
-      Ajax(form);
-    }
-  });
+    $("form.ajax .submit").on('click', function () {
+        if ($("lake-height").val() !== "" &&
+                $("lake-depth").val() !== "" &&
+                $("lake-name").val() !== "") {
+            var form = $(this).closest("form");
+            Ajax(form);
+        }
+    });
 });
 
 var lake_size = 0;
@@ -112,9 +112,41 @@ window.addEventListener('load', function () {
             var img = document.querySelector('img');  // $('img')[0]
             img.src = URL.createObjectURL(this.files[0]); // set src to blob url
             // img.onload = imageIsLoaded;
+            ColorPick(URL.createObjectURL(this.files[0]));
         }
     });
 });
+function ColorPick(imgsrc) {
+    var canvas = $("#myCanvas").get(0);
+    var ctx = canvas.getContext("2d");
+
+    var image = new Image();
+    
+    
+    $(image).load(function () {
+        /*$("#myCanvas").css("height",this.height);
+         $("#myCanvas").css("width",this.width);*/
+        console.log(this.height)
+        ctx.drawImage(image, 0, 0, 200,200* image.height/image.width); 
+    });
+    image.src = imgsrc;
+    
+    $(canvas).click(function (e) {   
+        var canvasOffset = $(canvas).offset();
+        var canvasX = Math.floor(e.pageX - canvasOffset.left);
+        var canvasY = Math.floor(e.pageY - canvasOffset.top);
+
+        var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        var pixels = imageData.data;
+        var pixelRedIndex = ((canvasY - 1) * (imageData.width * 4)) + ((canvasX - 1) * 4);
+        var pixelcolor = "rgba(" + pixels[pixelRedIndex] + ", " + pixels[pixelRedIndex + 1] + ", " + pixels[pixelRedIndex + 2] + ", " + pixels[pixelRedIndex + 3] + ")";
+        $("#red").val(pixels[pixelRedIndex]);
+        $("#blue").val(pixels[pixelRedIndex + 2]);
+        $("#green").val(pixels[pixelRedIndex + 1]);
+
+    });
+
+}
 
 function imageIsLoaded() {
     alert(this.src);  // blob url

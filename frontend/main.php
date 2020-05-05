@@ -46,8 +46,9 @@
   <div class="container">
 
     <div class="row">
+        	<form action="" method="post" class="ajax" enctype="multipart/form-data" data-method="ajax">
+
       <div class="col-sm">
-	<form action="" method="post" class="ajax" enctype="multipart/form-data" data-method="ajax">
         <div class="row" style="margin-top: 1rem;">
           <div class="col-lg">
             
@@ -92,7 +93,7 @@
                   style="margin-left: 1rem; margin-right: 1rem;"
                   >Calculate lake's size</a>
         </div>
-</form>
+
         <div class="dropdown-divider" style="margin-top: 2rem; margin-bottom: 2rem;"></div>
 
         <div class="row" style="margin-top: 1rem;">
@@ -161,7 +162,45 @@
                    >
           </div>
         </div>
+                  <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">RGB</span>
+                <canvas id="myCanvas" width="200" >
+        Your user agent does not support the HTML5 Canvas element.
+    </canvas>
+            </div>
+            <input type="text"
+                   class="form-control"
+                   readonly="readonly"
+                   aria-label="red"
+                   name="red"
+                   placeholder="red"
+                   aria-describedby="red"
+                   id="red"
+                   >
+                                                <input type="text"
+                   class="form-control"
+                   readonly="readonly"
+                   aria-label="green"
+                   name="green"
+                   aria-describedby="green"
+                   placeholder="green"
+                   id="green"
+                   >
+                        <input type="text"
+                   class="form-control"
+                   readonly="readonly"
+                   aria-label="blue"
+                   name="blue"
+                   placeholder="blue"
+                   aria-describedby="blue"
+                   id="blue"
+                   >
+                                   
 
+          </div>
+        </div>
+</form>
 
       </div>
 
@@ -171,6 +210,7 @@
             <canvas id="backgroundCanvas" width="1000px" height="750px" style="z-index:10;background-color:transparent;"></canvas>
             </div>
           <img src="" id="uploaded-img" style="width: 1000px; margin-top: 1rem; margin-left: 1rem; margin-right: 1rem;" alt="">
+
         </div>
       </div>
 
@@ -179,7 +219,7 @@
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.22/fabric.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

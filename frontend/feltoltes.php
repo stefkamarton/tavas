@@ -9,8 +9,8 @@ function Upload($name = "file") {
     }
 }
 
-function getCoordinates($filename) {
-    $command = escapeshellcmd('./detector.py 119 174 117 '.$filename);
+function getCoordinates($filename, $colors) {
+    $command = escapeshellcmd('./detector.py '.$colors["blue"].' '.$colors["green"].' '.$colors["red"].' '.$filename);
     $output = shell_exec($command);
     return $output;
 }
@@ -18,7 +18,7 @@ function getCoordinates($filename) {
 if ($_POST["__method__"] == "ajax") {
     $res = array();
     $res['filename'] = Upload();
-    $res['coord']= getCoordinates($res['filename']);
+    $res['coord']= getCoordinates($res['filename'], array("red"=>$_POST["red"],"blue"=>$_POST["blue"],"green"=>$_POST["green"]));
     echo json_encode($res);
 } else {
     die("501 - UNAUTHORIZED");
