@@ -4,6 +4,10 @@ var array_length;
 var circle_count = 1;
 var fill_color = "rgba(46, 240, 56, 0.5)";
 
+var small_size = 100;
+var medium_size = 300;
+var large_size = 500;
+
 function readCoordinates(coordinates) {
     let coordinate_pairs = coordinates.split(" ");
     let index;
@@ -12,6 +16,8 @@ function readCoordinates(coordinates) {
             addCircle(coordinate_pairs[index].split(',')[0], coordinate_pairs[index].split(',')[1]);
         }
     }
+
+    calculateSize();
 }
 
 function addCircle(x, y) {
@@ -48,6 +54,10 @@ canvas.on('object:moving', function (option) {
         }
     })
 
+    calculateSize();
+});
+
+function calculateSize(){
     let all_coordinates = [];
     let index;
     for (index = 1; index < canvas._objects.length; index++) {
@@ -55,13 +65,15 @@ canvas.on('object:moving', function (option) {
     }
 
     let sum = 0;
-    for (index = 0; index < all_coordinates.length - 1; index++) {
-        let act_sum = all_coordinates[index].x * all_coordinates[index + 1].y - all_coordinates[index].y * all_coordinates[index + 1].x;
-        sum += isNaN(act_sum) ? 0 : act_sum;
+    for(index = 0; index < all_coordinates.length - 1; index++){
+      let act_sum = all_coordinates[index].x * all_coordinates[index + 1].y - all_coordinates[index].y * all_coordinates[index + 1].x;
+      sum += isNaN(act_sum) ? 0 : act_sum;
     }
-    console.log("area: " + Math.abs(sum / 2));
-    document.getElementById("lake-surface").value=Math.abs(sum / 2);
-});
+    let surface = Math.abs(sum/2);
+    let small_surface = surface/2;
+  
+    console.log("volume: " + (surface * small_size/2 + small_surface *small_size/2));
+  }
 
 function drawPolygon() {
     array_length = circle_count;
