@@ -17,7 +17,7 @@ function readCoordinates(coordinates) {
     let coordinate_pairs = coordinates.split(" ");
     let index;
     for (index = 0; index < coordinate_pairs.length; index++) {
-        if (index % 30 == 0) {
+        if (index % coordinate_pairs.length*.3 == 0) {
             addCircle(coordinate_pairs[index].split(',')[0], coordinate_pairs[index].split(',')[1]);
         }
     }
