@@ -1,5 +1,6 @@
 "use strict";
 $(document).ready(function () {
+    $(".pickedcolor").hide();
     $("form.ajax .submit").on('click', function () {
         if ($("lake-height").val() !== "" &&
                 $("lake-depth").val() !== "" &&
@@ -128,7 +129,9 @@ function ColorPick(imgsrc) {
         /*$("#myCanvas").css("height",this.height);
          $("#myCanvas").css("width",this.width);*/
         console.log(this.height)
-        ctx.drawImage(image, 0, 0,200,200); 
+        document.getElementById("myCanvas").setAttribute("width",this.width);
+        document.getElementById("myCanvas").setAttribute("height",this.height);
+        ctx.drawImage(image, 0, 0); 
     });
     image.src = imgsrc;
     
@@ -144,7 +147,8 @@ function ColorPick(imgsrc) {
         $("#red").val(pixels[pixelRedIndex]);
         $("#blue").val(pixels[pixelRedIndex + 2]);
         $("#green").val(pixels[pixelRedIndex + 1]);
-        $("#pickedcolor").css("backgroundColor", pixelcolor);
+        $(".pickedcolor").css("backgroundColor", pixelcolor);
+        $(".pickedcolor").show();
     });
 
 }

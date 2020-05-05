@@ -8,9 +8,6 @@ var small_size = 100;
 var medium_size = 300;
 var large_size = 500;
 
-var sensor_width = 6.17;
-var focal_length = 4.55;
-var altitude = 50.4;
 var image_width = 3968;
 
 function readCoordinates(coordinates) {
@@ -62,11 +59,17 @@ canvas.on('object:moving', function (option) {
     calculateSize();
 });
 
-function GSD(){
+function GSD() {
+    var sensor_width = $("#lake-sensor").val();
+    var focal_length = $("#focus-length").val();
+    var altitude = $("#lake-altitude").val();
+    console.log(sensor_width);
+    console.log(altitude);
+    console.log(focal_length);
     return (sensor_width * altitude * 100) / (focal_length * image_width);
 }
 
-function calculateSize(){
+function calculateSize() {
     let all_coordinates = [];
     let index;
     for (index = 1; index < canvas._objects.length; index++) {
@@ -74,19 +77,24 @@ function calculateSize(){
     }
 
     let sum = 0;
-    for(index = 0; index < all_coordinates.length - 1; index++){
-      let act_sum = all_coordinates[index].x * all_coordinates[index + 1].y - all_coordinates[index].y * all_coordinates[index + 1].x;
-      sum += isNaN(act_sum) ? 0 : act_sum;
+    for (index = 0; index < all_coordinates.length - 1; index++) {
+        let act_sum = all_coordinates[index].x * all_coordinates[index + 1].y - all_coordinates[index].y * all_coordinates[index + 1].x;
+        sum += isNaN(act_sum) ? 0 : act_sum;
     }
-    let surface = Math.abs(sum/2);
-    let small_surface = surface/2;
-  
-    let volume = surface * small_size/2 + small_surface *small_size/2; //in pixels
+    let surface = Math.abs(sum / 2);
+    let small_surface = surface / 2;
+
+    let volume = surface * small_size / 2 + small_surface * small_size / 2; //in pixels
 
     console.log("vol: " + volume);
-    volume =(volume * GSD()) / 10000;
+    volume = (volume * GSD()) / 10000;
     console.log("vol in m3: " + volume);
-  }
+    if (!isNaN(volume)) {
+        $("#lake-surface").val(volume);
+    }else{
+        $("#lake-surface").val("You don't give enough parameter!");
+    }
+}
 
 function drawPolygon() {
     array_length = circle_count;
