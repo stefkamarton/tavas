@@ -11,6 +11,7 @@ var large_size = 500;
 var image_width = 3968;
 
 function readCoordinates(coordinates) {
+    canvas._objects = [];
     let coordinate_pairs = coordinates.split(" ");
     let index;
     for (index = 0; index < coordinate_pairs.length; index++) {
