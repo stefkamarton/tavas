@@ -13,7 +13,7 @@ $(document).ready(function () {
     });
     $("form.ajax .save").on('click', function () {
         var form = $(this).closest("form");
-            Ajax(form, "save");
+        Ajax(form, "save");
     });
 });
 
@@ -62,9 +62,14 @@ function Ajax(obj, method) {
             return xhr;
         },
         success: function (data, textStatus) {
-            console.log(data.coord);
-            readCoordinates(data.coord);
-            drawPolygon();
+            if (method == "upload") {
+                console.log(data.coord);
+                readCoordinates(data.coord);
+                drawPolygon();
+                $("#svg_coord").val(data.coord);
+            }else if(method=="save"){
+                
+            }
         },
         error: function (req, status, err) {
             alert("bajvan");

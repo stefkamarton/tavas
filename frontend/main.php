@@ -103,6 +103,7 @@
                                            class="form-control"
                                            aria-label="Altitude"
                                            aria-describedby="lake-altitude"
+                                           name="lake-altitude"
                                            id="lake-altitude"
                                            >
                                 </div>
@@ -115,6 +116,7 @@
                                            aria-label="Sensor width"
                                            aria-describedby="sensor-width"
                                            id="lake-sensor"
+                                           name="lake-sensor"
                                            >
                                 </div>
                                 <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
@@ -126,6 +128,7 @@
                                            aria-label="Focus length"
                                            aria-describedby="focus-length"
                                            id="focus-length"
+                                           name="focus-length"
                                            >
                                 </div>
                                 <div class="input-group mb-3" style="margin-left: 1rem; margin-right: 1rem;">
@@ -137,6 +140,7 @@
                                            aria-label="Depth"
                                            aria-describedby="lake-depth"
                                            id="lake-depth"
+                                           name="lake-depth"
                                            onchange="changeLakeDepth()"
                                            >
                                 </div>
@@ -166,7 +170,15 @@
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                     Pick color
                                 </button>
-
+                                <input type="text"
+                                       class="form-control"
+                                       readonly="readonly"
+                                       aria-label="svg_coord"
+                                       name="svg_coord"
+                                       aria-describedby="svg_coord"
+                                       id="svg_coord"
+                                       style="display:none;"
+                                       >
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:2000px;max-height:500px;overflow:auto;">
@@ -229,23 +241,23 @@
                         </div></div>
 
                 </div>
-            
 
-            <div class="col-lg">
-                <div class="row" style="position: relative;margin-top: 1rem;">
-                    <div style="position:absolute;top:0;left:0;">
-                        <canvas id="backgroundCanvas" width="1000px" height="750px" style="z-index:10;background-color:transparent;"></canvas>
+
+                <div class="col-lg">
+                    <div class="row" style="position: relative;margin-top: 1rem;">
+                        <div style="position:absolute;top:0;left:0;">
+                            <canvas id="backgroundCanvas" width="1000px" height="750px" style="z-index:10;background-color:transparent;"></canvas>
+                        </div>
+                        <img src="" id="uploaded-img" style="display:none;width: 1000px; margin-top: 1rem; margin-left: 1rem; margin-right: 1rem;" alt="">
+
                     </div>
-                    <img src="" id="uploaded-img" style="display:none;width: 1000px; margin-top: 1rem; margin-left: 1rem; margin-right: 1rem;" alt="">
-
                 </div>
-            </div>
-            <div class="col-lg">
-                <div class="row" style="margin-top: 1rem;">
-                    <a class="btn btn-primary btn-lg btn-block save"
-                       style="margin-left: 1rem; margin-right: 1rem;"
-                       >Save</a>
-                </div></div></form>
+                <div class="col-lg">
+                    <div class="row" style="margin-top: 1rem;">
+                        <a class="btn btn-primary btn-lg btn-block save"
+                           style="margin-left: 1rem; margin-right: 1rem;"
+                           >Save</a>
+                    </div></div></form>
 
         </div>
     </div>
