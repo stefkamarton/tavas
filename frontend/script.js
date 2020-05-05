@@ -1,13 +1,19 @@
 "use strict";
 $(document).ready(function () {
     $(".pickedcolor").hide();
+    $(".hidden").hide();
     $("form.ajax .submit").on('click', function () {
         if ($("lake-height").val() !== "" &&
                 $("lake-depth").val() !== "" &&
                 $("lake-name").val() !== "") {
             var form = $(this).closest("form");
-            Ajax(form);
+            Ajax(form, "upload");
+            $("#uploaded-img").show();
         }
+    });
+    $("form.ajax .save").on('click', function () {
+        var form = $(this).closest("form");
+            Ajax(form, "save");
     });
 });
 
@@ -18,13 +24,13 @@ var picutre_height = 0;
 var lake_depth = 0;
 var lake_surface = 0;
 
-function Ajax(obj) {
+function Ajax(obj, method) {
     var datatags = $(obj).closest('form').data();
     var formData = new FormData($(obj).closest('form')[0]);
+    formData.append("__method__", method);
     $.each(datatags, function (key, value) {
         formData.append("__" + key + "__", value);
     });
-    console.log(formData);
 
     $.ajax({
         type: "POST",
@@ -112,6 +118,7 @@ window.addEventListener('load', function () {
         if (this.files && this.files[0]) {
             var img = document.querySelector('img');  // $('img')[0]
             img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+            $(".hidden").show(500);
             // img.onload = imageIsLoaded;
             ColorPick(URL.createObjectURL(this.files[0]));
         }
@@ -123,19 +130,19 @@ function ColorPick(imgsrc) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     var image = new Image();
-    
-    
+
+
     $(image).load(function () {
         /*$("#myCanvas").css("height",this.height);
          $("#myCanvas").css("width",this.width);*/
         console.log(this.height)
-        document.getElementById("myCanvas").setAttribute("width",this.width);
-        document.getElementById("myCanvas").setAttribute("height",this.height);
-        ctx.drawImage(image, 0, 0); 
+        document.getElementById("myCanvas").setAttribute("width", this.width);
+        document.getElementById("myCanvas").setAttribute("height", this.height);
+        ctx.drawImage(image, 0, 0);
     });
     image.src = imgsrc;
-    
-    $(canvas).click(function (e) {   
+
+    $(canvas).click(function (e) {
         var canvasOffset = $(canvas).offset();
         var canvasX = Math.floor(e.pageX - canvasOffset.left);
         var canvasY = Math.floor(e.pageY - canvasOffset.top);
