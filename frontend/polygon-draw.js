@@ -1,3 +1,5 @@
+"use strict";
+
 var canvas = new fabric.Canvas('backgroundCanvas');
 var polygon_count = 1;
 var array_length;

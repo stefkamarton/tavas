@@ -1,4 +1,12 @@
 "use strict";
+
+var lake_size = 0;
+var lake_name = '';
+
+var picutre_height = 0;
+var lake_depth = 0;
+var lake_surface = 0;
+
 $(document).ready(function () {
     $(".pickedcolor").hide();
     $(".hidden").hide();
@@ -16,13 +24,6 @@ $(document).ready(function () {
             Ajax(form, "save");
     });
 });
-
-var lake_size = 0;
-var lake_name = '';
-
-var picutre_height = 0;
-var lake_depth = 0;
-var lake_surface = 0;
 
 function Ajax(obj, method) {
     var datatags = $(obj).closest('form').data();
@@ -80,10 +81,6 @@ function changeLakeName() {
     lake_name = $('#lake-name').val();
 }
 
-function calculateLakeSize() {
-
-}
-
 function changeLakeHeight() {
     let input = $('#lake-height').val();
     if (input !== '') {
@@ -105,21 +102,12 @@ function changeLakeSurface() {
     }
 }
 
-function login() {
-
-}
-
-function logout() {
-
-}
-
 window.addEventListener('load', function () {
     document.querySelector('input[type="file"]').addEventListener('change', function () {
         if (this.files && this.files[0]) {
-            var img = document.querySelector('img');  // $('img')[0]
-            img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+            var img = document.querySelector('img');  
+            img.src = URL.createObjectURL(this.files[0]); 
             $(".hidden").show(500);
-            // img.onload = imageIsLoaded;
             ColorPick(URL.createObjectURL(this.files[0]));
         }
     });
@@ -133,8 +121,6 @@ function ColorPick(imgsrc) {
 
 
     $(image).load(function () {
-        /*$("#myCanvas").css("height",this.height);
-         $("#myCanvas").css("width",this.width);*/
         console.log(this.height)
         document.getElementById("myCanvas").setAttribute("width", this.width);
         document.getElementById("myCanvas").setAttribute("height", this.height);
@@ -158,9 +144,4 @@ function ColorPick(imgsrc) {
         $(".pickedcolor").show();
     });
 
-}
-
-function imageIsLoaded() {
-    alert(this.src);  // blob url
-    // update width and height ...
 }
